@@ -1,7 +1,21 @@
 doctype html
-html
+html(lang='eng')
   head
     title= title
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width' initial-scale=1)
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    block navbar
+      .navbar 
+        .logo 
+          a(href='/') Stonecutters 
+
+        .user 
+          
+          a(href='/members/log-in') Log In 
+          a(href='/members/sign-up') Sign Up
+
+          a(href='/members/log-out') Log Out
+
     block content

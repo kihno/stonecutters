@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.redirect('/stonecutters');
 });
 
+router.get('/stonecutters', function(req, res, next) {
+  res.render('index', { title: 'Stonecutters' });
+})
+
 module.exports = router;

@@ -1,21 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+const message_controller = require('../controllers/messageController');
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('message list');
-});
+router.get('/', message_controller.message_list);
 
-router.get('/create', function(req, res, next) {
-  res.send('create message');
-});
+router.get('/create', message_controller.message_create_get);
 
-router.post('/create', function(req, res, next) {
-  res.send('send message');
-});
+router.post('/create', message_controller.message_create_post);
 
-router.get('/message/:id', function(req, res, next) {
-  res.send('single message page');
-});
+router.get('/message/:id', message_controller.message_detail);
 
 module.exports = router;

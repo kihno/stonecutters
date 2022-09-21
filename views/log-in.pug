@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+
+    h1 Member Log In 
+
+    form(action='' method='POST')
+        label(for='username') Username:
+        input(name='username' placeholder='username' type='text')
+        label(for='password') Password:
+        input(name='password' type='password')
+        button(type='submit') Log In
