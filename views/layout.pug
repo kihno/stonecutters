@@ -9,13 +9,19 @@ html(lang='eng')
     block navbar
       .navbar 
         .logo 
-          a(href='/') Stonecutters 
+          if currentUser 
+            a(href='/messages') Stonecutters
+            a(href='/members') Members
+          else
+            a(href='/') Stonecutters 
 
         .user 
-          
-          a(href='/members/log-in') Log In 
-          a(href='/members/sign-up') Sign Up
+          if currentUser
+            a(href='/members/log-out') Log Out
+          else
+            a(href='/members/log-in') Log In 
+            a(href='/members/sign-up') Sign Up
 
-          a(href='/members/log-out') Log Out
+          
 
     block content

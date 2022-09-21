@@ -1,0 +1,21 @@
+extends layout 
+
+block content 
+
+    if currentUser
+
+        h1= title 
+
+        if members 
+            ul 
+                each member in members 
+                    li
+                        a(href=member.url)= member.username
+
+        else 
+            p There are no members yet.
+
+    else 
+
+        h1 Outcast 
+        p Only members can view this page

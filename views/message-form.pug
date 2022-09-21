@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+
+    if currentUser
+
+        h1= title
+
+        form(action='' method='POST')
+            .form-control 
+                label(for='message') Message:
+                textarea(name="message" cols="30", rows="10" required=true)
+            button(type='submit') Post
+
+        if errors 
+            ul.errors 
+                each error in errors 
+                    li= error
+    
+    else 
+        h1 Outcast 
+        p Only members can view this page

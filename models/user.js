@@ -12,7 +12,18 @@ const UserSchema = new Schema(
 )
 
 UserSchema.virtual('url').get(function() {
-    return `/stonecutters/member/${this._id}`;
+    return `/members/${this._id}`;
 });
+
+UserSchema.virtual('full_name').get(function() {
+    let fullname = '';
+    if (this.first_name && this.last_name) {
+        fullname = `${this.first_name} ${this.last_name}`
+    }
+    if (!this.first_name || !this.last_name) {
+        fullname = this.first_name || this.last_name;
+    }
+    return fullname;
+})
 
 module.exports = mongoose.model('User', UserSchema);

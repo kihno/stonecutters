@@ -2,4 +2,24 @@ extends layout
 
 block content 
 
-    h1 Recent Messages
+    if currentUser
+
+        h1 Recent Messages
+
+        a(href='/messages/create') New Message
+
+        if messages
+            .messages
+                each message in messages 
+                    .message 
+                        .time #{message.timestamp_formatted}
+                        .text #{message.text}
+                        .sender #{message.sender.username}
+
+        else 
+            p There are no messages yet.
+
+    else 
+
+        h1 Outcast 
+        p Only members can view this page

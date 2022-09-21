@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+
+    if currentUser
+
+        h1 #{title}: #{member.username}
+
+        p Name: #{member.full_name}
+
+        h4 Posts: 
+
+        if member_posts
+            ul 
+                each post in member_posts
+                    li
+                        div.time= post.timestamp_formatted
+                        div.text= post.text 
+
+    else 
+        h1 Outcast 
+        p Only members can view this page
