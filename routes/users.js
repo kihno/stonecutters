@@ -6,6 +6,10 @@ const user_controller = require('../controllers/userController');
 /* GET users listing. */
 router.get('/', user_controller.user_list);
 
+router.get('/secret', user_controller.user_secret_get);
+
+router.post('/secret', user_controller.user_secret_post);
+
 router.get('/sign-up', user_controller.user_create_get);
 
 router.post('/sign-up', user_controller.user_create_post);

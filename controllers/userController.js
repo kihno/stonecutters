@@ -1,8 +1,10 @@
 const async = require('async');
-const User = require('../models/user');
-const Message = require('../models/message');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
+const User = require('../models/user');
+const Message = require('../models/message');
 
 exports.user_list = (req, res, next) => {
     User.find()
@@ -11,6 +13,50 @@ exports.user_list = (req, res, next) => {
         if (err) { return next(err) }
 
         res.render('member-list', { members: members });
+    });
+};
+
+exports.user_secret_get = (req, res, next) => {
+    res.render('secret', { title: 'Members Only' });
+};
+
+exports.user_secret_post = [
+    body('answer', 'You have guessed... poorly.')
+    .trim()
+    .isLength({ min:1 })
+    .custom(val => {
+        if (val.split(' ').join('').toLowerCase() === 'wedo') return true;
+        return false;
+    })
+    .escape(),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            res.render('secret', { title: 'Members Only', errors: errors.array() });
+            return;
+        } 
+
+        res.render('sign-up', { title: 'Sign Up', worthy:true });
+    }
+];
+
+exports.user_login_get = (req, res, next) => {
+    res.render('log-in', { title: 'Member Log In' });
+};
+
+exports.user_login_post = passport.authenticate('local', {
+    successRedirect: '/messages',
+    failureRedirect: '/log-in'
+});
+
+exports.user_logout_get = (req, res, next) => {
+    req.logout(function(err) {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
     });
 };
 
@@ -34,26 +80,8 @@ exports.user_create_post = (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            res.redirect('/messages');
+            res.render('log-in', { title: 'Member Log In', newMember:true });
         });
-    });
-};
-
-exports.user_login_get = (req, res, next) => {
-    res.render('log-in', { title: 'Member Log In' });
-};
-
-exports.user_login_post = passport.authenticate('local', {
-    successRedirect: '/messages',
-    failureRedirect: '/log-in'
-});
-
-exports.user_logout_get = (req, res, next) => {
-    req.logout(function(err) {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/');
     });
 };
 

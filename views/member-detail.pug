@@ -10,12 +10,18 @@ block content
 
         h4 Posts: 
 
-        if member_posts
+        if currentUser.id == member.id 
+            a(href='/messages/create') New Post
+
+        if member_posts.length > 0
             ul 
                 each post in member_posts
                     li
                         div.time= post.timestamp_formatted
                         div.text= post.text 
+
+        else 
+            p This member hasn't posted anything yet.
 
     else 
         h1 Outcast 
