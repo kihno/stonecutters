@@ -8,7 +8,7 @@ const Message = require('../models/message');
 
 exports.user_list = (req, res, next) => {
     User.find()
-    .sort({ username: 1 })
+    .sort({ sort: 1 })
     .exec(function(err, members) {
         if (err) { return next(err) }
 
@@ -69,6 +69,9 @@ exports.user_create_post = (req, res, next) => {
         if (err) {
             return next(err)
         }
+
+        const errors = validationResult(req);
+
         const user = new User(
             {
                 first_name: req.body.first_name,
@@ -76,12 +79,28 @@ exports.user_create_post = (req, res, next) => {
                 username: req.body.username,
                 password: hashPass
             }
-        ).save(err => {
-            if (err) {
-                return next(err);
-            }
-            res.render('log-in', { title: 'Member Log In', newMember:true });
-        });
+        )
+
+        if(!errors.isEmpty()) {
+            res.render('sign-up', { title: 'Sign Up', worthy:true, errors: errors.array() });
+            return;
+        } else {
+            User.findOne({ username: req.body.username }).exec((err, found_user) => {
+                if (err) { return next(err) }
+
+                if (found_user) {
+                    const error = Array.from('Username already exists');
+                    res.render('sign-up', { title: 'Sign Up', worthy:true, errors: error });
+                } else {
+                    user.save(err => {
+                        if (err) {
+                            return next(err);
+                        }
+                        res.render('success', { title: 'Member Log In', success:true });
+                    });
+                }
+            })
+        }
     });
 };
 
@@ -92,7 +111,9 @@ exports.user_detail = (req, res, next) => {
                 User.findById(req.params.id).exec(callback);
             },
             member_posts(callback) {
-                Message.find({ sender: req.params.id }).exec(callback);
+                Message.find({ sender: req.params.id })
+                .sort({ timestamp: -1 })
+                .exec(callback);
             },
         },
         (err, results) => {

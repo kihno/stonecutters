@@ -15,7 +15,7 @@ block content
         if errors 
             ul.errors 
                 each error in errors 
-                    li= error.msg
+                    li= error || error.msg
     
     else 
         h1 Outcast 

@@ -24,6 +24,12 @@ UserSchema.virtual('full_name').get(function() {
         fullname = this.first_name || this.last_name;
     }
     return fullname;
+});
+
+UserSchema.virtual('sort').get(function() {
+    let split = this.username.split(' ');
+    let number = split[1];
+    return parseInt(number);
 })
 
 module.exports = mongoose.model('User', UserSchema);

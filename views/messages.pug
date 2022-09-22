@@ -12,9 +12,11 @@ block content
             .messages
                 each message in messages 
                     .message 
-                        .time #{message.timestamp_formatted}
                         .text #{message.text}
-                        .sender #{message.sender.username}
+                        hr
+                        .info
+                            .sender Post by #[a(href=message.sender.url) #{message.sender.username}]
+                            .time #{message.timestamp_formatted}
 
         else 
             p There are no messages yet.

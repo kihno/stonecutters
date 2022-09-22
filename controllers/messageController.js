@@ -3,7 +3,7 @@ const Message = require('../models/message');
 
 exports.message_list = (req, res, next) => {
   Message.find()
-  .sort({ timestamp: 1 })
+  .sort({ timestamp: -1 })
   .populate('sender')
   .exec(function(err, list_messages) {
     if (err) { return next(err) }
@@ -20,7 +20,7 @@ exports.message_create_post = [
   body('message', 'Message must have text')
   .trim()
   .isLength({ min:1 })
-  .escape(),
+  .blacklist('<>'),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -42,7 +42,7 @@ exports.message_create_post = [
     message.save((err) => {
       if (err) { return next(err) }
 
-      res.render('/messages');
+      res.redirect('/messages');
     });
   }
 ];
