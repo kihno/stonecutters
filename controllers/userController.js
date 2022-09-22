@@ -113,6 +113,24 @@ exports.user_create_post = [
     }
 ];
 
+exports.user_update_get = (req, res, next) => {
+    User.findById(req.params.id).exec((err, member) => {
+        if (err) { return next(err) }
+
+        if (member == null) {
+            const err = new Error('Member not found.');
+            err.status = 404;
+            return next(err);
+        }
+
+        res.render('sign-up', { title: `Update Member ${member.username}`, user: member})
+    });
+};
+
+exports.user_update_post = [
+
+];
+
 exports.user_detail = (req, res, next) => {
     async.parallel(
         {

@@ -5,6 +5,8 @@ block content
     if currentUser
 
         h1 #{title}: #{member.username}
+        if currentUser.id==member.id || currentUser.admin
+            a(href=member.url + '/update') Update
 
         p Name: #{member.full_name}
 

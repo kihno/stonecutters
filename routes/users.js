@@ -14,6 +14,10 @@ router.get('/sign-up', user_controller.user_create_get);
 
 router.post('/sign-up', user_controller.user_create_post);
 
+router.get('/:id/update', user_controller.user_update_get);
+
+router.post('/:id/update', user_controller.user_update_post);
+
 router.get('/log-in', user_controller.user_login_get);
 
 router.post('/log-in', user_controller.user_login_post);

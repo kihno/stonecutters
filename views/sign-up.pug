@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    if worthy 
+    if worthy || currentUser
 
         h1= title
 
@@ -15,13 +15,18 @@ block content
                 input(name='last_name' placeholder='Last Name' type='text' value=(user===undefined ? '' : user.last_name))
             .form-control
                 label(for='username') Username:
-                input(name='username' placeholder='username' type='text')
+                input(name='username' placeholder='username' type='text' value=(user===undefined ? '' : user.username))
             .form-control
                 label(for='password') Password:
                 input(name='password' type='password')
             .form-control
                 label(for='passwordConfirm') Confirm Password:
                 input(name='passwordConfirm' type='password')
+            if user
+                if user.admin==true 
+                .form-checkbox
+                    label(form='admin') Admin 
+                    input(type='checkbox' name='admin' checked=(user===indefined ? false : user.admin))
             button(type='submit').submit Sign Up
 
         if errors 
