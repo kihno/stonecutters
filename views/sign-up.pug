@@ -7,17 +7,22 @@ block content
         h1= title
 
         form(action='/members/sign-up' method='POST')
-            label(for='first_name') First Name:
-            input(name='first_name' placeholder='First Name' type='text' value=(user===undefined ? '' : user.first_name))
-            label(for='last_name') Last Name:
-            input(name='last_name' placeholder='Last Name' type='text' value=(user===undefined ? '' : user.last_name))
-            label(for='username') Username:
-            input(name='username' placeholder='username' type='text' value=defaultUser)
-            label(for='password') Password:
-            input(name='password' type='password')
-            label(for='passwordConfirm') Confirm Password:
-            input(name='passwordConfirm' type='password')
-            button(type='submit') Sign Up
+            .form-control
+                label(for='first_name') First Name:
+                input(name='first_name' placeholder='First Name' type='text' value=(user===undefined ? '' : user.first_name))
+            .form-control
+                label(for='last_name') Last Name:
+                input(name='last_name' placeholder='Last Name' type='text' value=(user===undefined ? '' : user.last_name))
+            .form-control
+                label(for='username') Username:
+                input(name='username' placeholder='username' type='text')
+            .form-control
+                label(for='password') Password:
+                input(name='password' type='password')
+            .form-control
+                label(for='passwordConfirm') Confirm Password:
+                input(name='passwordConfirm' type='password')
+            button(type='submit').submit Sign Up
 
         if errors 
             ul 

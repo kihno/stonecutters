@@ -23,6 +23,24 @@ a {
   padding: 20px;
 }
 
+form, .form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  gap: 10px;
+  width: 320px;
+}
+
+.submit {
+  align-self: flex-start;
+}
+
+.riddleAnswer {
+  flex-direction: row;
+}
+
 .messages {
   display: flex;
   flex-direction: column;

@@ -38,7 +38,7 @@ exports.user_secret_post = [
             return;
         } 
 
-        res.render('sign-up', { title: 'Sign Up', worthy:true, });
+        res.render('sign-up', { title: 'Sign Up', worthy:true });
     }
 ];
 
@@ -107,7 +107,7 @@ exports.user_create_post = [
                             res.render('success', { title: 'Member Log In', success:true });
                         });
                     }
-                })
+                });
             }
         });
     }
