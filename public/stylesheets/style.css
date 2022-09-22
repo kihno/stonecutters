@@ -19,6 +19,10 @@ a {
   gap: 20px;
 }
 
+.main {
+  padding: 20px;
+}
+
 .messages {
   display: flex;
   flex-direction: column;

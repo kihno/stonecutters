@@ -89,8 +89,7 @@ exports.user_create_post = (req, res, next) => {
                 if (err) { return next(err) }
 
                 if (found_user) {
-                    const error = Array.from('Username already exists');
-                    res.render('sign-up', { title: 'Sign Up', worthy:true, errors: error });
+                    res.render('sign-up', { title: 'Sign Up', worthy:true, user:user, error: 'Username already exists.' });
                 } else {
                     user.save(err => {
                         if (err) {
