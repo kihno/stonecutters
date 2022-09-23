@@ -15,7 +15,7 @@ block content
                         .text #{message.text}
                         hr
                         .info
-                            .sender Post by #[a(href=message.sender.url) #{message.sender.username}]
+                            .sender Posted by #[a(href=message.sender.url) #{message.sender.username}]
                             .time #{message.timestamp_formatted}
 
         else 

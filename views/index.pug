@@ -1,5 +1,18 @@
 extends layout
 
 block content
+ 
   h1= title
-  p Secret Society
+
+  if messages
+      .messages
+          each message in messages 
+              .message 
+                  .text #{message.text}
+                  hr
+                  .info
+                      .sender Posted by #[strong Anonymous]
+                      .time #{message.timestamp_formatted}
+
+  else 
+      p There are no messages yet.
