@@ -4,16 +4,18 @@ block content
 
     if currentUser
 
-        h1= title 
+        .memberList
 
-        if members 
-            ul 
-                each member in members 
-                    li
-                        a(href=member.url)= member.username
+            h1.simp= title 
 
-        else 
-            p There are no members yet.
+            if members 
+                ul 
+                    each member in members 
+                        li
+                            a(href=member.url)= member.username
+
+            else 
+                p There are no members yet.
 
     else 
 

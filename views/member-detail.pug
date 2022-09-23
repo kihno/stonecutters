@@ -4,26 +4,29 @@ block content
 
     if currentUser
 
-        h1 #{title}: #{member.username}
-        if currentUser.id==member.id || currentUser.admin
-            a(href=member.url + '/update') Update
+        .memberDetail
 
-        p Name: #{member.full_name}
+            .memberHeader
+                h1 #{title}: #{member.username}
+                if currentUser.id==member.id || currentUser.admin
+                    a(href=member.url + '/update').btn Update
 
-        h4 Posts: 
+            h3 Name: #{member.full_name}
 
-        if currentUser.id == member.id 
-            a(href='/messages/create') New Post
+            if currentUser.id == member.id 
+                a(href='/messages/create').btn New Post
 
-        if member_posts.length > 0
-            ul 
-                each post in member_posts
-                    li
-                        div.time= post.timestamp_formatted
-                        div.text= post.text 
+            h3 Posts: 
 
-        else 
-            p This member hasn't posted anything yet.
+            if member_posts.length > 0
+                ul.messages 
+                    each post in member_posts
+                        li.message
+                            div.time= post.timestamp_formatted
+                            div.text= post.text 
+
+            else 
+                p This member hasn't posted anything yet.
 
     else 
         h1 Outcast 

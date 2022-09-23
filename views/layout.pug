@@ -10,15 +10,17 @@ html(lang='eng')
       .navbar 
         .navLinks
           if currentUser 
-            a.animate(href='/messages'): img.logo(src='../images/stonecutters.png' alt='The Stonecutters') 
+            a.animate(href='/messages'): img.logo(src='/images/stonecutters.png' alt='The Stonecutters') 
             a(href='/members') Members
             a(href='/members/creed') Creed
           else
-            a.animate(href='/stonecutters'): img.logo(src='../images/stonecutters.png' alt='The Stonecutters') 
+            a.animate(href='/stonecutters'): img.logo(src='/images/stonecutters.png' alt='The Stonecutters') 
 
         .user 
           if currentUser
-            .welcome Welcome #[a(href=currentUser.url) #{currentUser.username}]!
+            .welcome 
+              p Welcome
+              a(href=currentUser.url) #{currentUser.username}!
             a(href='/members/log-out').btn Log Out
           else
             a(href='/members/log-in').btn Log In 

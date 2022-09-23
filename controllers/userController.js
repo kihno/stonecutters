@@ -12,7 +12,7 @@ exports.user_list = (req, res, next) => {
     .exec(function(err, members) {
         if (err) { return next(err) }
 
-        res.render('member-list', { members: members });
+        res.render('member-list', { title: 'Members', members: members });
     });
 };
 

@@ -56,16 +56,27 @@ input, textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  padding: 30px;
   border-bottom: 5px solid #cdab20;
   position: sticky;
   top: 0;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navLinks>a:hover {
+  transform: scale(1.1);
 }
 
 .logo {
   width: 80px;
   cursor: pointer;
   transition: transform .7s ease-in-out;
+  margin-right: 20px;
 }
 
 .logo:hover {
@@ -74,7 +85,25 @@ input, textarea {
 
 .user {
   display: flex;
+  align-items: center;
   gap: 20px;
+}
+
+.welcome {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.welcome>p {
+  font-family: 'akbar_plain';
+  font-size: 20px;
+  margin: 0;
+}
+
+.welcome>a:hover {
+  text-decoration: underline;
 }
 
 .btn {
@@ -102,6 +131,13 @@ input, textarea {
 .secret {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.intro {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
 }
 
@@ -127,6 +163,7 @@ form {
 
 .riddleAnswer {
   flex-direction: row;
+  align-items: center;
 }
 
 .messages {
@@ -150,6 +187,39 @@ form {
   padding: 20px 5px 20px 5px;
   font-size: 20px;
   font-weight: 500;
+}
+
+.memberList {
+  align-self: start;
+}
+
+.memberList>ul>li:hover {
+  text-decoration: underline;
+}
+
+.memberDetail {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.memberDetail>a {
+  align-self: start;
+}
+
+.memberDetail>ul {
+  list-style: none;
+}
+
+.memberHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.memberHeader>h1 {
+  margin: 0;
 }
 
 .info {
