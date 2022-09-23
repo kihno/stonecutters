@@ -48,7 +48,7 @@ exports.user_login_get = (req, res, next) => {
 
 exports.user_login_post = passport.authenticate('local', {
     successRedirect: '/messages',
-    failureRedirect: '/log-in'
+    failureRedirect: '/members/log-in'
 });
 
 exports.user_logout_get = (req, res, next) => {
@@ -187,6 +187,7 @@ exports.user_update_post = [
                     first_name: req.body.first_name,
                     last_name: req.body.last_name,
                     username: req.body.username,
+                    admin: req.body.admin,
                     _id: req.params.id
                 }
             );

@@ -22,11 +22,11 @@ block content
             .form-control
                 label(for='passwordConfirm') Confirm Password:
                 input(name='passwordConfirm' type='password')
-            if user
-                if user.admin==true 
+            if currentUser
+                if currentUser.admin==true 
                     .form-checkbox
                         label(form='admin') Admin 
-                        input(type='checkbox' name='admin' checked=(user===indefined ? false : user.admin))
+                        input(type='checkbox' name='admin' checked=(user===undefined ? false : user.admin) value=1)
             button(type='submit').submit #{title}
 
         if errors 
