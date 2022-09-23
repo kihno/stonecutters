@@ -1,25 +1,37 @@
+@font-face {
+  font-family: 'akbar_plain';
+  src: url('simpsonfont-webfont.woff2') format('woff2'),
+       url('simpsonfont-webfont.woff') format('woff'),
+       url('simpsonfont-webfont.tff') format('tff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   background-color: #96321e;
   color: #cdab20; 
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive, sans-serif;
 }
 
-#953421
-#973465
-#cdab20
-#ec0a0b
-#444488
+.simp {
+  font-family: 'akbar_plain';
+  font-size: 42px;
+}
 
 a {
   color: #00B7FF;
 }
 
 .navbar {
+  background-color: #96321e;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 50px;
   border-bottom: 5px solid #cdab20;
+  position: sticky;
+  top: 0;
 }
 
 .user {
@@ -27,8 +39,38 @@ a {
   gap: 20px;
 }
 
+.btn {
+  text-decoration: none;
+  background-color: #6e1c45;
+  color: #cdab20;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
 .main {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.secret {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.riddle {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
 }
 
 form, .form-control {
@@ -59,13 +101,21 @@ form {
 
 .message {
   width: 320px;
-  border: 1px solid #ec0a0b;
+  border: 2px solid #ec0a0b;
   background-color: #444488;
   border-radius: 10px;
   padding: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+}
+
+.text{
+  padding: 10px 5px 10px 5px;
+  font-size: 20px;
 }
 
 .info {
   display: flex;
   justify-content: space-between;
+  padding: 0 5px 10px 5px;
+  font-size: 14px;
 }

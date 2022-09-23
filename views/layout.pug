@@ -18,10 +18,10 @@ html(lang='eng')
         .user 
           if currentUser
             .welcome Welcome #[a(href=currentUser.url) #{currentUser.username}]!
-            a(href='/members/log-out') Log Out
+            a(href='/members/log-out').btn Log Out
           else
-            a(href='/members/log-in') Log In 
-            a(href='/members/sign-up') Sign Up
+            a(href='/members/log-in').btn Log In 
+            a(href='/members/sign-up').btn Sign Up
 
           
     .main
