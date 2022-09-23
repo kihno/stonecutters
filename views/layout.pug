@@ -8,12 +8,13 @@ html(lang='eng')
   body
     block navbar
       .navbar 
-        .logo 
+        .navLinks
           if currentUser 
             a(href='/messages') Stonecutters
             a(href='/members') Members
+            a(href='/stonecutters/creed') Creed
           else
-            a(href='/') Stonecutters 
+            a.animate(href='/stonecutters'): img.logo(src='../images/stonecutters.png' alt='The Stonecutters') 
 
         .user 
           if currentUser
