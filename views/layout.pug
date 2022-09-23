@@ -10,9 +10,9 @@ html(lang='eng')
       .navbar 
         .navLinks
           if currentUser 
-            a(href='/messages') Stonecutters
+            a.animate(href='/messages'): img.logo(src='../images/stonecutters.png' alt='The Stonecutters') 
             a(href='/members') Members
-            a(href='/stonecutters/creed') Creed
+            a(href='/members/creed') Creed
           else
             a.animate(href='/stonecutters'): img.logo(src='../images/stonecutters.png' alt='The Stonecutters') 
 

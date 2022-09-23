@@ -4,12 +4,11 @@ block content
 
     if currentUser
 
-        h1 Recent Messages
-
-        a(href='/messages/create') New Message
+        h1.simp Recent Messages
 
         if messages
             .messages
+                a(href='/messages/create').btn.add New Message
                 each message in messages 
                     .message 
                         .text #{message.text}
@@ -19,6 +18,7 @@ block content
                             .time #{message.timestamp_formatted}
 
         else 
+            a(href='/messages/create').btn.add New Message
             p There are no messages yet.
 
     else 

@@ -6,6 +6,10 @@ const user_controller = require('../controllers/userController');
 /* GET users listing. */
 router.get('/', user_controller.user_list);
 
+router.get('/creed', function(req, res, next) {
+    res.render('creed', { title: 'Sacred Society of the Stonecutters'});
+  });
+
 router.get('/secret', user_controller.user_secret_get);
 
 router.post('/secret', user_controller.user_secret_post);

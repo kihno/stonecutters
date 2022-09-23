@@ -27,7 +27,7 @@ block content
                     .form-checkbox
                         label(form='admin') Admin 
                         input(type='checkbox' name='admin' checked=(user===undefined ? false : user.admin) value=1)
-            button(type='submit').submit #{title}
+            button(type='submit').submit.btn #{title}
 
         if errors 
             ul 
