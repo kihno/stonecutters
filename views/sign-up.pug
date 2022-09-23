@@ -4,9 +4,9 @@ block content
 
     if worthy || currentUser
 
-        h1= title
+        h1 #{title}
 
-        form(action='/members/sign-up' method='POST')
+        form(action=actionUrl, method='POST')
             .form-control
                 label(for='first_name') First Name:
                 input(name='first_name' placeholder='First Name' type='text' value=(user===undefined ? '' : user.first_name))
@@ -24,10 +24,10 @@ block content
                 input(name='passwordConfirm' type='password')
             if user
                 if user.admin==true 
-                .form-checkbox
-                    label(form='admin') Admin 
-                    input(type='checkbox' name='admin' checked=(user===indefined ? false : user.admin))
-            button(type='submit').submit Sign Up
+                    .form-checkbox
+                        label(form='admin') Admin 
+                        input(type='checkbox' name='admin' checked=(user===indefined ? false : user.admin))
+            button(type='submit').submit #{title}
 
         if errors 
             ul 
